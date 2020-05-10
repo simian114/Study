@@ -1,4 +1,4 @@
-### Rule
+### :bowtie: Rule
 -----
 
 #### ***Commit message 규칙.***
