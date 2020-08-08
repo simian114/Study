@@ -26,7 +26,7 @@ Plugin 'Yggdroot/indentLine'
 " Markdown
 Plugin 'shime/vim-livedown'
 " Ctags
-" Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 " vim theme
 Plugin 'morhetz/gruvbox'
@@ -39,12 +39,11 @@ nmap <F2> :Stdheader<CR>
 nmap <F3> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
 
+" 재빠르게 jk누르면 인서트모드 나가짐
+:imap jk <Esc>
+
 " ESC + / -> 주석
 noremap <ESC>/ :Commentary<cr>
-
-" Save!
-map <C-s> <ESC>:w<CR>
-imap <C-s> <ESC>:w<CR>
 
 " Save and Quit!
 map <C-d> <ESC>:wq<CR>
@@ -54,13 +53,14 @@ imap <C-d> <ESC>:wq<CR>
 map <F9> v]}zf
 map <F10> zo
 
+
 " <ESC to CTRL + C>
 nmap <C-c> :<ESC>
 
 " Moving line
 
-nnoremap <S-Up> :m-2<CR>
-nnoremap <S-Down> :m+1<CR>
+nnoremap <S-j> :m-2<CR>
+nnoremap <S-k> :m+1<CR>
 
 " 파일 버퍼 간 이동
 " 원하는 파일 버퍼로 이동하기
@@ -77,20 +77,25 @@ map ,8 :b!8<CR>
 map ,9 :b!9<CR>
 
 " 다음 파일 버퍼로 이동
-map ,x :bn!<CR>
-nnoremap <S-RIGHT> :bn!<CR>
+nnoremap <S-l> :bn!<CR>
 
 " 이 전 파일 버퍼로 이동
-map ,z :bp!<CR>
-nnoremap <S-LEFT> :bp!<CR>
+map ,z :!gcc *.c && ./a.out<CR>
+nnoremap <S-h> :bp!<CR>
 
 " 현재 파일 버퍼 닫음
 map ,w :bw<CR>
 
+map ,, <ESC>:w<CR>
+:imap ,, <ESC>:w<CR>
+
+map ,. <ESC>:wq<CR>
+:imap ,. <ESC>:wq<CR>
+
 "==================== theme ========================
-"colorscheme gruvbox
+colorscheme gruvbox
 "set dark mode
-"set bg=dark
+set bg=dark
 
 "===================== man page 설정 =========================
 
@@ -99,6 +104,15 @@ func! Man()
 		exe "!man -S 2:3:4:5:6:7:8:9:tcl:n:l:p:o ".sm
 		endfunc
 		nmap ,ma :call Man ()<cr><cr>
+
+"===================== ctags 설정
+set tags=./tags
+map <C-h> :!ctags -R<CR>
+nnoremap <C-j> <C-]>
+nnoremap <C-k> <C-t>
+
+map <F8> :TagbarToggle<CR>
+
 
 "===================== 기본 설정========================
 " indent line
