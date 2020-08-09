@@ -80,17 +80,17 @@ map ,9 :b!9<CR>
 nnoremap <S-l> :bn!<CR>
 
 " 이 전 파일 버퍼로 이동
-map ,z :!gcc *.c && ./a.out<CR>
+map ,c :!gcc *.c && ./a.out<CR>
 nnoremap <S-h> :bp!<CR>
 
 " 현재 파일 버퍼 닫음
 map ,w :bw<CR>
 
-map ,, <ESC>:w<CR>
-:imap ,, <ESC>:w<CR>
+map ,z <ESC>:w<CR>
+:imap ,z <ESC>:w<CR>
 
-map ,. <ESC>:wq<CR>
-:imap ,. <ESC>:wq<CR>
+map ,x <ESC>:wq<CR>
+:imap ,x <ESC>:wq<CR>
 
 "==================== theme ========================
 colorscheme gruvbox
