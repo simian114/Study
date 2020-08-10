@@ -49,6 +49,12 @@ noremap <ESC>/ :Commentary<cr>
 map <C-d> <ESC>:wq<CR>
 imap <C-d> <ESC>:wq<CR>
 
+map ;s <ESC>:w<CR>
+:imap ;s <ESC>:w<CR>
+
+map ;d <ESC>:wq<CR>
+:imap ;d <ESC>:wq<CR>
+
 " Folding
 map <F9> v]}zf
 map <F10> zo
@@ -86,11 +92,6 @@ nnoremap <S-h> :bp!<CR>
 " 현재 파일 버퍼 닫음
 map ,w :bw<CR>
 
-map ,z <ESC>:w<CR>
-:imap ,z <ESC>:w<CR>
-
-map ,x <ESC>:wq<CR>
-:imap ,x <ESC>:wq<CR>
 
 "==================== theme ========================
 colorscheme gruvbox
@@ -107,7 +108,7 @@ func! Man()
 
 "===================== ctags 설정
 set tags=./tags
-map <C-h> :!ctags -R<CR>
+map <C-h> :!ctags -R<CR><CR>
 nnoremap <C-j> <C-]>
 nnoremap <C-k> <C-t>
 
