@@ -39,6 +39,9 @@ nmap <F2> :Stdheader<CR>
 nmap <F3> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
 
+" 자동완성
+:imap ;j <C-p>
+
 " 재빠르게 jk누르면 인서트모드 나가짐
 :imap jk <Esc>
 
