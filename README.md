@@ -1,5 +1,7 @@
 ### vim 사용법
 
+[vim tips wiki](https://vim.fandom.com/wiki/Vim_Tips_Wiki)
+
 ##### 1. 파일버퍼 사용하기.
 
 - 여러 파일을 한번에 수정해야 하는 경우가 빈번하다. 이런 경우 하나의 파일을 수정하고 닫고.. 다른 파일을 또 열고 닫고.. 다시 다른 파일을 여는 방식으로 코딩을 하면 매우 귀찮다.... 따라서 한번에 파일을 열고 작업을 하는 방법을 알아보자.
@@ -51,13 +53,12 @@
 - 설치하는 방법은 구글에 매우 많으니까 참고해서 설치하고 키 매핑을 한번 해보자. 아래처럼 키 매핑을 했다.
   ```
   set tags=./tags
-  map <C-h> :!ctags -R<CR>
-  nnoremap <C-j> <C-]>
-  nnoremap <C-k> <C-t>
+  map <C-[> :!ctags -R<CR>
+  nnoremap <C-y> <C-]>
 
   map <F8> :TagbarToggle<CR>
   ```
-- 이제 ```Ctrl + h```로 tags 파일을 만들 수 있고, ```Ctrl + j```로 함수를 찾고, ```Ctrl + k```로 다시 돌아 올 수 있다.
+- 이제 ```Ctrl + h```로 tags 파일을 만들 수 있고, ```Ctrl + j```로 함수를 찾고, ```Ctrl + t```로 다시 돌아 올 수 있다.
 
 
 -----
@@ -80,6 +81,8 @@
 -----
 ##### 4. 치환하기
 
+- [참고사이트](https://vim.fandom.com/wiki/Search_and_replace)
+
 - 모든 문자열 치환
   ```:%s/foo/bar/g```
   
@@ -93,4 +96,53 @@
   ```:5,12s/foo/bar/g```
   
 - 비주얼 표시 된 곳만 바꾸고 싶을 때
-  ```Visual + shift + ; -> "\'<,\'>s/foo/bar/g```
+  ```Visual + shift + ; -> "'<,'>s/foo/bar/g```
+
+- 정규표현식 응용
+  - 특정 문자(abc)로 시작하는 문자열 바꾸고 싶을 때
+    ```g/^abc/s/foo/bar/g```j
+    
+-----    
+##### 5. 화면 분할
+
+[참고사이트](https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally)
+
+- 여러 파일 수직분할로 동시에 오픈
+  ```vim -O *.c```
+
+- 여러 파일 수평분할로 동시에 오픈
+  ```vim -o *.c```
+
+- 수직분할
+  ```Ctrl + w + v```, ```:vs filename```
+  
+- 수평분할
+  ```Ctrl + w + s```, ```, :sp filename```
+ 
+- 이동
+  ```Ctrl + h, j, k, l```
+  
+- 위, 아래 사이즈 조정
+  ```Ctrl + w + "-" or "+"```
+
+- 좌, 우 사이즈 조정
+  ```Ctrl + w + > or < ```
+  
+  
+- 분할 화면 닫기
+  ```:wq```, ```Ctrl + w + q```
+  - 화면을 닫아도 파일버퍼는 남아 있어서 계속 이용할 수 있음. 화면만 없앤거
+  
+- 현재 창만 남기고 나머지는 지우기
+  ```:only```
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
