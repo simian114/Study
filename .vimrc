@@ -124,6 +124,7 @@ set ruler
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
+set mouse=a
 
 set autoindent
 set cindent
