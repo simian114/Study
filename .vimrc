@@ -52,9 +52,9 @@ noremap <ESC>/ :Commentary<cr>
 
 " Save and Quit!
 map <C-d> <ESC>:w<CR>
-imap <C-d> <EC>:w<CR>
+:imap <C-d> <ESC>:w<CR>
 map <C-f> <ESC>:wq<CR>
-imap <C-f> <ESC>:wq<CR>
+:imap <C-f> <ESC>:wq<CR>
 
 " Folding
 map <F9> v]}zf
