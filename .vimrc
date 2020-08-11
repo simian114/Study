@@ -10,6 +10,8 @@ Plugin 'VundleVim/Vundle.vim'
 " 42header
 Plugin 'pbondoer/vim-42header'
 
+Plugin 'terryma/vim-multiple-cursors'
+
 Plugin 'tpope/vim-commentary'
 Plugin 'Tagbar'
 Plugin 'neocomplcache'
@@ -49,14 +51,10 @@ let NERDTreeQuitOnOpen=1
 noremap <ESC>/ :Commentary<cr>
 
 " Save and Quit!
-map <C-d> <ESC>:wq<CR>
-imap <C-d> <ESC>:wq<CR>
-
-map ;s <ESC>:w<CR>
-:imap ;s <ESC>:w<CR>
-
-map ;d <ESC>:wq<CR>
-:imap ;d <ESC>:wq<CR>
+map <C-d> <ESC>:w<CR>
+imap <C-d> <EC>:w<CR>
+map <C-f> <ESC>:wq<CR>
+imap <C-f> <ESC>:wq<CR>
 
 " Folding
 map <F9> v]}zf
@@ -68,8 +66,8 @@ nmap <C-c> :<ESC>
 
 " Moving line
 
-nnoremap <S-j> :m-2<CR>
-nnoremap <S-k> :m+1<CR>
+nnoremap <S-k> :m-2<CR>
+nnoremap <S-j> :m+1<CR>
 
 " 파일 버퍼 간 이동
 " 원하는 파일 버퍼로 이동하기
@@ -94,7 +92,6 @@ nnoremap <S-h> :bp!<CR>
 
 " 현재 파일 버퍼 닫음
 map ,w :bw<CR>
-
 
 "==================== theme ========================
 colorscheme gruvbox
