@@ -48,6 +48,13 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 
+" 분할 창 크기 조절
+
+nnoremap <C-UP> <C-W>-
+nnoremap <C-DOWN> <C-W>+
+nnoremap <C-RIGHT> <C-W>>
+nnoremap <C-LEFT> <C-W><
+
 " 자동완성
 :imap ;j <C-p>
 
@@ -115,9 +122,9 @@ func! Man()
 
 "===================== ctags 설정
 set tags=./tags
-map <C-h> :!ctags -R<CR><CR>
-nnoremap <C-j> <C-]>
-nnoremap <C-k> <C-t>
+nnoremap <C-y> <C-]>
+map <C-[> :!ctags -R<CR><CR>
+"nnoremap <C-k> <C-t>
 
 map <F8> :TagbarToggle<CR>
 
