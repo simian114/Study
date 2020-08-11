@@ -10,6 +10,7 @@ Plugin 'VundleVim/Vundle.vim'
 " 42header
 Plugin 'pbondoer/vim-42header'
 
+" multiline editing
 Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'tpope/vim-commentary'
@@ -41,11 +42,17 @@ nmap <F2> :Stdheader<CR>
 nmap <F3> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
 
+" 화면 분할
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+
 " 자동완성
 :imap ;j <C-p>
 
 " 재빠르게 jk누르면 인서트모드 나가짐
-:imap jk <Esc>
+:imap hj <Esc>
 
 " ESC + / -> 주석
 noremap <ESC>/ :Commentary<cr>
