@@ -43,10 +43,18 @@ nmap <F3> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
 
 " 화면 분할
-nnoremap <C-H> <C-W><C-H>
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
+"nnoremap <C-H> <C-W><C-H>
+"nnoremap <C-J> <C-W><C-J>
+"nnoremap <C-K> <C-W><C-K>
+"nnoremap <C-L> <C-W><C-L>
+"nnoremap <C-Q> <C-W><C-Q>
+
+nnoremap <C-H> <C-W>h
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+nnoremap <C-Q> <C-W>q
+
 
 " 분할 창 크기 조절
 
@@ -123,8 +131,8 @@ func! Man()
 "===================== ctags 설정
 set tags=./tags
 nnoremap <C-y> <C-]>
-map <C-[> :!ctags -R<CR><CR>
-"nnoremap <C-k> <C-t>
+"map <C-[> :!ctags -R<CR><CR>
+nnoremap <C-g> :!ctags -R<CR><CR>
 
 map <F8> :TagbarToggle<CR>
 
