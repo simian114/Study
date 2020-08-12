@@ -42,13 +42,9 @@ nmap <F2> :Stdheader<CR>
 nmap <F3> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
 
-" 화면 분할
-"nnoremap <C-H> <C-W><C-H>
-"nnoremap <C-J> <C-W><C-J>
-"nnoremap <C-K> <C-W><C-K>
-"nnoremap <C-L> <C-W><C-L>
-"nnoremap <C-Q> <C-W><C-Q>
+:imap <C-b> <BACKSPACE>
 
+" 화면 분할
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
@@ -57,7 +53,6 @@ nnoremap <C-Q> <C-W>q
 
 
 " 분할 창 크기 조절
-
 nnoremap <C-UP> <C-W>-
 nnoremap <C-DOWN> <C-W>+
 nnoremap <C-RIGHT> <C-W>>
@@ -73,18 +68,15 @@ nnoremap <C-LEFT> <C-W><
 noremap <ESC>/ :Commentary<cr>
 
 " Save and Quit!
-map <C-d> <ESC>:w<CR>
-:imap <C-d> <ESC>:w<CR>
-map <C-f> <ESC>:wq<CR>
-:imap <C-f> <ESC>:wq<CR>
+map <C-c> <ESC>:w<CR>
+noremap <C-c> <ESC>:w<CR>
+":imap <C-c> <ESC>:w<CR>
+map <C-x> <ESC>:wq<CR>
+:imap <C-x> <ESC>:wq<CR>
 
 " Folding
 map <F9> v]}zf
 map <F10> zo
-
-
-" <ESC to CTRL + C>
-nmap <C-c> :<ESC>
 
 " Moving line
 
@@ -121,6 +113,7 @@ colorscheme gruvbox
 set bg=dark
 
 "===================== man page 설정 =========================
+"
 
 func! Man()
 	let sm = expand("<cword>")
@@ -130,7 +123,8 @@ func! Man()
 
 "===================== ctags 설정
 set tags=./tags
-nnoremap <C-y> <C-]>
+nnoremap <C-f> <C-]>
+nnoremap <C-d> <C-t>
 "map <C-[> :!ctags -R<CR><CR>
 nnoremap <C-g> :!ctags -R<CR><CR>
 
