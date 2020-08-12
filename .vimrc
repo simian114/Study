@@ -42,6 +42,7 @@ nmap <F2> :Stdheader<CR>
 nmap <F3> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
 
+" Ctrl + b로 지우기
 :imap <C-b> <BACKSPACE>
 
 " 화면 분할
@@ -59,7 +60,7 @@ nnoremap <C-RIGHT> <C-W>>
 nnoremap <C-LEFT> <C-W><
 
 " 자동완성
-:imap ;j <C-p>
+:imap ;l <C-p>
 
 " 재빠르게 jk누르면 인서트모드 나가짐
 :imap hj <Esc>
@@ -80,8 +81,11 @@ map <F10> zo
 
 " Moving line
 
+nnoremap ,ms <S-k>
+
 nnoremap <S-k> :m-2<CR>
 nnoremap <S-j> :m+1<CR>
+
 
 " 파일 버퍼 간 이동
 " 원하는 파일 버퍼로 이동하기
@@ -99,6 +103,7 @@ map ,9 :b!9<CR>
 
 " 다음 파일 버퍼로 이동
 nnoremap <S-l> :bn!<CR>
+nnoremap <Tab> :bn!<CR>
 
 " 이 전 파일 버퍼로 이동
 map ,c :!gcc *.c && ./a.out<CR>
