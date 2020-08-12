@@ -42,7 +42,6 @@ nmap <F2> :Stdheader<CR>
 nmap <F3> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
 
-" Ctrl + b로 지우기
 :imap <C-b> <BACKSPACE>
 
 " 화면 분할
@@ -50,8 +49,10 @@ nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
+" 분할 화면 닫기
 nnoremap <C-Q> <C-W>q
 
+cabbrev vb vert sb
 
 " 분할 창 크기 조절
 nnoremap <C-UP> <C-W>-
