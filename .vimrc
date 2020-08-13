@@ -50,15 +50,15 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 " 분할 화면 닫기
-nnoremap <C-Q> <C-W>q
+nnoremap <C-q> <C-W>q
 
 cabbrev vb vert sb
 
 " 분할 창 크기 조절
-nnoremap <C-UP> <C-W>-
-nnoremap <C-DOWN> <C-W>+
-nnoremap <C-RIGHT> <C-W>>
-nnoremap <C-LEFT> <C-W><
+nnoremap <C-S-UP> <C-W>-
+nnoremap <C-S-DOWN> <C-W>+
+nnoremap <C-S-RIGHT> <C-W>>
+nnoremap <C-S-LEFT> <C-W><
 
 " 자동완성
 :imap ;l <C-p>
@@ -86,6 +86,10 @@ nnoremap ,ms <S-k>
 
 nnoremap <S-k> :m-2<CR>
 nnoremap <S-j> :m+1<CR>
+
+" 공백 하이라이팅
+highlight ExtraWhitespace ctermbg=grey guibg=grey
+match ExtraWhitespace /\s\+$/
 
 
 " 파일 버퍼 간 이동
@@ -120,7 +124,6 @@ set bg=dark
 
 "===================== man page 설정 =========================
 "
-
 func! Man()
 	let sm = expand("<cword>")
 		exe "!man -S 2:3:4:5:6:7:8:9:tcl:n:l:p:o ".sm
