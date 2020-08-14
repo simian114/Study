@@ -69,12 +69,15 @@
   - 키 매핑을 통해서 바꿔보자.
   
   - 저장
-    - ```map ,z <ESC>:w<CR>```, ```:imap ,z <ESC>:w<CR>```
+    - ```map <C-c> <ESC>:w<CR>```, ```:imap  <C-c> <ESC>:w<CR>```
     - 이제 단순히 저장만 하는 경우에는 ```,z```를 타이핑하면 된다. ```insert``` 모드에서도 작동한다.
   
   - 저장 및 닫기
-    - ```map ,x <ESC>:wq<CR>```, ```:imap ,x <ESC>:wq<CR>```
+    - ```map <C-x> <ESC>:wq<CR>```, ```:imap <C-x> <ESC>:wq<CR>```
 
+  - 강제 닫기
+    - ```map <C-e> <ESC>:q!<CR>
+    
   - 라인 바꾸기
     - ```nnoremap <S-j> :m-2<CR>```, ```nnoremap <S-k> :m+1<CR>```
     
@@ -138,19 +141,19 @@
   
 - 파일버퍼 열려있을 때 화면분할해서 버퍼를 화면에 띄우기
   - 수직 분할 후 넣기
-    ```sb[buffer_number]```
+    ```:sb[buffer_number]```
   - 수평 분할 후 넣기
-    ```vb[buffer_number]```
+    ```:vb[buffer_number]```
   - 파일 버퍼 번호는 ```:ls``` 또는 ```,m\```` 통해서 확인가능.
   
 - 파일버퍼와 화면 분할 동시에 닫고 싶을 때(파일 버퍼만 닫을 때도 사용)
-  ```bd[buffer_number]```
+  ```:bd[buffer_number]```
   
 - 열려있는 모든 파일 저장, 닫기
   - 저장
-    ```wall```
+    ```:wall```
   - 저장 후 닫기
-    ```-wqall```
+    ```:wqall```
   
   
   
