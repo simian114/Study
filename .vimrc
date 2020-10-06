@@ -1,4 +1,5 @@
 set rtp+=~/.vim/bundle/Vundle.vim
+filetype plugin indent on
 call vundle#begin()
 
 "let Vundle manage Vundle
@@ -13,7 +14,10 @@ Plugin 'pbondoer/vim-42header'
 " multiline editing
 Plugin 'terryma/vim-multiple-cursors'
 
-Plugin 'tpope/vim-commentary'
+Plugin 'surround.vim'
+Plugin 'scrooloose/nerdcommenter'
+
+Plugin 'Raimondi/delimitMate'
 Plugin 'Tagbar'
 Plugin 'neocomplcache'
 Plugin 'L9'
@@ -29,14 +33,18 @@ Plugin 'Yggdroot/indentLine'
 " Markdown
 Plugin 'shime/vim-livedown'
 " Ctags
-Plugin 'xolox/vim-easytags'
-Plugin 'xolox/vim-misc'
+"Plugin 'xolox/vim-easytags'
+"Plugin 'xolox/vim-misc'
 " vim theme
 Plugin 'morhetz/gruvbox'
 
+" Snippets
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
+Plugin 'Vimjas/vim-python-pep8-indent'
+
 call vundle#end()
-"======================= markdown ======================
-nmap gm :LivedownPreview<CR>
 "======================= key mapping =======================
 nmap <F2> :Stdheader<CR>
 nmap <F3> :NERDTreeToggle<CR>
@@ -44,30 +52,29 @@ let NERDTreeQuitOnOpen=1
 
 :imap <C-b> <BACKSPACE>
 
-" 화면 분할
+" 화면 분할 후 이동
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 " 분할 화면 닫기
-nnoremap <C-q> <C-W>q
+nnoremap <C-Q> <C-W>q
 
 cabbrev vb vert sb
 
 " 분할 창 크기 조절
-nnoremap <C-S-UP> <C-W>-
-nnoremap <C-S-DOWN> <C-W>+
-nnoremap <C-S-RIGHT> <C-W>>
-nnoremap <C-S-LEFT> <C-W><
+nnoremap <C-UP> <C-W>-
+nnoremap <C-DOWN> <C-W>+
+nnoremap <C-RIGHT> <C-W>>
+nnoremap <C-LEFT> <C-W><
 
 " 자동완성
-:imap ;l <C-p>
+":imap <C-'> <C-p>
 
 " 재빠르게 jk누르면 인서트모드 나가짐
 :imap hj <Esc>
 
 " ESC + / -> 주석
-noremap <ESC>/ :Commentary<cr>
 
 " Save and Quit!
 map <C-c> <ESC>:w<CR>
@@ -87,10 +94,6 @@ nnoremap ,ms <S-k>
 nnoremap <S-k> :m-2<CR>
 nnoremap <S-j> :m+1<CR>
 
-" 공백 하이라이팅
-highlight ExtraWhitespace ctermbg=grey guibg=grey
-match ExtraWhitespace /\s\+$/
-
 
 " 파일 버퍼 간 이동
 " 원하는 파일 버퍼로 이동하기
@@ -108,10 +111,10 @@ map ,9 :b!9<CR>
 
 " 다음 파일 버퍼로 이동
 nnoremap <S-l> :bn!<CR>
-nnoremap <Tab> :bn!<CR>
+" nnoremap <Tab> :bn!<CR>
 
 " 이 전 파일 버퍼로 이동
-map ,c :!gcc *.c && ./a.out<CR>
+" map ,c :!gcc *.c && ./a.out<CR>
 nnoremap <S-h> :bp!<CR>
 
 " 현재 파일 버퍼 닫음
@@ -121,9 +124,11 @@ map ,w :bw<CR>
 colorscheme gruvbox
 "set dark mode
 set bg=dark
+" let g:airline_theme = 'codedark'
 
 "===================== man page 설정 =========================
 "
+
 func! Man()
 	let sm = expand("<cword>")
 		exe "!man -S 2:3:4:5:6:7:8:9:tcl:n:l:p:o ".sm
@@ -139,17 +144,24 @@ nnoremap <C-g> :!ctags -R<CR><CR>
 
 map <F8> :TagbarToggle<CR>
 
+if len(filter(range(argc()), 'getfsize(argv(v:val))>pow(1024,3)*7')) > 0
+  echomsg "Hey! Vim will quit VLC!"
+    sleep 3
+	  cquit!
+endif
+autocmd BufReadPre * if getfsize(expand("<afile>"))>pow(1024,3)*7|echomsg "Hey! Vim will quit VLC"|sleep 3|cquit!|endif
+
+autocmd BufRead,BufNewFile *.htm,*.html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 "===================== 기본 설정========================
 " indent line
-"set listchars=tab:\|\ 
-"set list
 set cursorline
 set ruler
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
 set mouse=a
+
 
 set autoindent
 set cindent
@@ -161,6 +173,35 @@ set ignorecase
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
+let delimitMate_expand_cr=1
+
+let mapleader=","
+" NERD Commenter
+" " Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" " Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" " Align line-wise comment delimiters flush left instead of following code
+" indentation
+let g:NERDDefaultAlign = 'left'
+" " Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" " Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/*','right': '*/' } }
+" " Allow commenting and inverting empty lines (useful when commenting a
+" region)
+let g:NERDCommentEmptyLines = 1
+" " Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" " customize keymapping
+map <Leader>cc <plug>NERDComToggleComment
+map <Leader>c<space> <plug>NERDComComment
 
 if has ("syntax")
 	syntax on
