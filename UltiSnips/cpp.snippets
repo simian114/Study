@@ -5,6 +5,100 @@ extends c
 # We want to overwrite everything in parent ft.
 priority -49
 ###########################################################################
+#			    UTIL 													  #
+###########################################################################
+
+snippet gettimediff "소요 시간 구하는 함수"
+// #include <sys/time.h>
+std::string getTimeDiff(timeval from)
+{
+	timeval t;
+	gettimeofday(&t, NULL);
+	std::string diff = std::to_string((t.tv_sec - from.tv_sec) * 1000000 + (t.tv_usec - from.tv_usec));
+	diff.push_back(' ');
+	return diff;
+}
+endsnippet
+
+snippet from_to
+timeval from;
+gettimeofday(&from, NULL);
+
+std::string from_to = getTimeDiff(from);
+endsnippet
+
+
+###########################################################################
+#			    ANSI COLOR 												  #
+###########################################################################
+snippet cout
+std::cout << << std::endl;
+endsnippet
+
+snippet cgray
+std::cout << "\033[1;30m" << ${1} << "\033[0m" << std::endl;
+endsnippet
+
+snippet gray
+"\033[1;30m${1}\033[0m"
+endsnippet
+
+snippet cred
+std::cout << "\033[1;31m" << ${1} << "\033[0m" << std::endl; ${2}
+endsnippet
+
+snippet red
+"\033[1;31m${1}\033[0m"
+endsnippet
+
+snippet cgreen
+std::cout << "\033[1;32m" << ${1} << "\033[0m" << std::endl;
+endsnippet
+
+snippet green
+"\033[1;32m${1}\033[0m"
+endsnippet
+
+snippet cyellow
+std::cout << "\033[1;33m" << ${1} << "\033[0m" << std::endl;
+endsnippet
+
+snippet yellow
+"\033[1;33m${1}\033[0m"
+endsnippet
+
+snippet cblue
+std::cout << "\033[1;34m" << ${1} << "\033[0m" << std::endl;
+endsnippet
+
+snippet blue
+"\033[1;34m${1}\033[0m"
+endsnippet
+
+snippet cpurple
+std::cout << "\033[1;35m" << ${1} << "\033[0m" << std::endl;
+endsnippet
+
+snippet purple
+"\033[1;35m${1}\033[0m"
+endsnippet
+
+snippet ccyan
+std::cout << "\033[1;36m" << ${1} << "\033[0m" << std::endl;
+endsnippet
+
+snippet cyan
+"\033[1;36m${1}\033[0m"
+endsnippet
+
+snippet cwhite
+std::cout << "\033[1;37m" << ${1} << "\033[0m" << ::endl;
+endsnippet
+
+snippet white
+"\033[1;37m${1}\033[0m"
+endsnippet
+###########################################################################
 #			    Global functions 						  #
 ###########################################################################
 
